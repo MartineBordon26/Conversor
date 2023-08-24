@@ -16,6 +16,7 @@ public class MainActivityModel extends AndroidViewModel {
     public MainActivityModel(@NonNull Application application) {
         super(application);
         context = application.getApplicationContext();
+        activeField.setValue(1);
     }
 
     public LiveData<Integer> getActiveField() {
@@ -34,21 +35,22 @@ public class MainActivityModel extends AndroidViewModel {
     }
 
 
-
-  /*  public void conversor(String dato1, String dato2 ) {
-
-        if(moneda.equals("dolar")) {
-            dinero *= 720;
+    public void handleConvert(double datum, double datum2 ) {
+        double resultado = 0;
+        if(activeField.getValue() == 2) {
+            resultado = datum * 0.92;
         } else {
-            dinero /= 720;
+            resultado = datum2 / 0.92;
         }
-        return dinero;
-    }*/
 
-    public int pesosADolar(int dinero) {
+        conversionMutalbe.setValue(resultado);
+
+    }
+
+   /* public int pesosADolar(int dinero) {
         return dinero *= 730;
     }
     public int dolarAPesos(int dinero) {
         return dinero /= 730;
-    }
+    }*/
 }
